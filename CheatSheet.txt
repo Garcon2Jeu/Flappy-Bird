@@ -32,10 +32,10 @@ PIPE
 PIPEMANAGER
 BIRD
 HITBOX
-LEVEL
+✅ LEVEL
 
-Font sizes
-8 font
-14
-28
-56
+✅ Font sizes
+✅ 8 font
+✅ 14
+✅ 28
+✅ 56
