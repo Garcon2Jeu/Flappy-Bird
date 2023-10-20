@@ -1,25 +1,25 @@
 -- Globals
-DONE -- WINDOW_WIDTH   = 1280
-DONE -- WINDOW_HEIGHT  = 720
+✅ WINDOW_WIDTH   = 1280
+✅ WINDOW_HEIGHT  = 720
 
-DONE -- VIRTUAL_WIDTH  = 512
-DONE -- VIRTUAL_HEIGHT = 288
+✅ VIRTUAL_WIDTH  = 512
+✅ VIRTUAL_HEIGHT = 288
 
-DONE -- CENTER_WIDTH   = VIRTUAL_WIDTH / 2
-DONE -- CENTER_HEIGHT  = VIRTUAL_HEIGHT / 2
+✅ CENTER_WIDTH   = VIRTUAL_WIDTH / 2
+✅ CENTER_HEIGHT  = VIRTUAL_HEIGHT / 2
 
 -- Here because i need it both in PipeManager and Pipe
 PIPE_GAP       = 120
 BACKGROUND LOOPING POINT 413
 
-APP
-DONE -- keypressed list
-DONE -- seed math random
-DONE -- default filters
-DONE -- set title
-DONE -- setupscren (+ resize!!)
-DONE -- fonts
-DONE -- audio
+✅ APP
+✅ keypressed list
+✅ seed math random
+✅ default filters
+✅ set title
+✅ setupscren (+ resize!!)
+✅ fonts
+✅ audio
 
 STATEMACHINE
 base

@@ -9,6 +9,8 @@ CENTER_HEIGHT  = WINDOW_HEIGHT / 2
 Class = require "libraries.class"
 Push  = require "libraries.push"
 
+require "objects.Environment"
+
 
 App = Class {}
 
@@ -35,7 +37,7 @@ function App:setWindow()
     love.graphics.setDefaultFilter("nearest", "nearest")
     Push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
-        resizable = true,
+        resizable = false,
         vsync = true
     })
 end
