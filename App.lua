@@ -1,6 +1,6 @@
 WINDOW_WIDTH   = 1280
 WINDOW_HEIGHT  = 720
-VIRTUAL_WIDTH  = 413
+VIRTUAL_WIDTH  = 512
 VIRTUAL_HEIGHT = 288
 CENTER_WIDTH   = WINDOW_WIDTH / 2
 CENTER_HEIGHT  = WINDOW_HEIGHT / 2
@@ -15,6 +15,9 @@ App = Class {}
 function App:init()
     math.randomseed(os.time())
     self:setWindow()
+
+    self.fonts = self:getFonts()
+    self.audio = self:getAudio()
 
     self.keysPressed = {}
 end
@@ -35,6 +38,26 @@ function App:setWindow()
         resizable = true,
         vsync = true
     })
+end
+
+function App:getFonts()
+    return {
+        small  = love.graphics.newFont("assets/fonts/font.ttf", 8),
+        medium = love.graphics.newFont("assets/fonts/flappy.ttf", 14),
+        big    = love.graphics.newFont("assets/fonts/flappy.ttf", 28),
+        huge   = love.graphics.newFont("assets/fonts/flappy.ttf", 56)
+    }
+    -- love.graphics.setFonts(bigFont)
+end
+
+function App:getAudio()
+    return {
+        explosion = love.audio.newSource("assets/audio/explosion.wav", "static"),
+        hurt = love.audio.newSource("assets/audio/hurt.wav", "static"),
+        jump = love.audio.newSource("assets/audio/jump.wav", "static"),
+        score = love.audio.newSource("assets/audio/score.wav", "static"),
+        music = love.audio.newSource("assets/audio/marios_way.mp3", "static")
+    }
 end
 
 function App:wasKeyPressed(key)
