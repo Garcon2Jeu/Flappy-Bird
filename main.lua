@@ -2,17 +2,18 @@ require "App"
 
 function love.load()
     app = App()
-    environment = Environment()
+    env = Environment()
 end
 
 function love.update(dt)
     app:update(dt)
+    env:update(dt)
 end
 
 function love.draw()
     Push:start()
-    environment:drawBackground()
-    environment:drawGround()
+    env:drawBackground()
+    env:drawGround()
     Push:finish()
 end
 
@@ -20,6 +21,6 @@ function love.keypressed(key)
     app.keysPressed[key] = true
 end
 
--- function love.resize(w, h)
---     Push:resize(w, h)
--- end
+function love.resize(w, h)
+    Push:resize(w, h)
+end

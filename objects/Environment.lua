@@ -21,10 +21,15 @@ function Environment:init()
     self.ground_X     = 0
 end
 
+function Environment:update(dt)
+    self.background_X = (self.background_X + BACKGROUND.SPEED * dt) % BACKGROUND.LOOPING_POINT
+    self.ground_X = (self.ground_X + GROUND.SPEED * dt) % VIRTUAL_WIDTH
+end
+
 function Environment:drawBackground()
-    love.graphics.draw(BACKGROUND.SPRITE, 0, 0)
+    love.graphics.draw(BACKGROUND.SPRITE, -self.background_X, 0)
 end
 
 function Environment:drawGround()
-    love.graphics.draw(GROUND.SPRITE, 0, GROUND.Y)
+    love.graphics.draw(GROUND.SPRITE, -self.ground_X, GROUND.Y)
 end
