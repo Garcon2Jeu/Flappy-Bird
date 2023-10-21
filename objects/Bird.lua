@@ -1,11 +1,12 @@
 Bird = Class {}
 
 
-local BIRD   = {}
-BIRD.SPRITE  = love.graphics.newImage("assets/images/bird.png")
-BIRD.WIDTH   = BIRD.SPRITE:getWidth()
-BIRD.HEIGHT  = BIRD.SPRITE:getHeight()
-BIRD.GRAVITY = 10
+local BIRD      = {}
+BIRD.SPRITE     = love.graphics.newImage("assets/images/bird.png")
+BIRD.WIDTH      = BIRD.SPRITE:getWidth()
+BIRD.HEIGHT     = BIRD.SPRITE:getHeight()
+BIRD.GRAVITY    = 10
+BIRD.JUMP_FORCE = -3
 
 
 function Bird:init()
@@ -15,7 +16,10 @@ function Bird:init()
 end
 
 function Bird:update(dt)
-    self.y = self:fall(dt)
+    self.dy = self:fall(dt)
+    self.dy = self:jump()
+
+    self.y = self.y + self.dy
 end
 
 function Bird:draw()
@@ -23,6 +27,9 @@ function Bird:draw()
 end
 
 function Bird:fall(dt)
-    self.dy = self.dy + BIRD.GRAVITY * dt
-    return self.y + self.dy
+    return self.dy + BIRD.GRAVITY * dt
+end
+
+function Bird:jump()
+    return app:wasKeyPressed("space") and BIRD.JUMP_FORCE or self.dy
 end
