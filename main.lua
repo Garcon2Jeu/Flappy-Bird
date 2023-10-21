@@ -5,7 +5,8 @@ function love.load()
     env = Environment()
 
     state = StateMachine {
-        ["start"] = function() return StartState() end
+        ["start"] = function() return StartState() end,
+        ["play"] = function() return PlayState() end
     }
 
     state:change("start")
