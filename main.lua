@@ -10,6 +10,8 @@ function love.load()
     }
 
     state:change("start")
+
+    dev = DevMode()
 end
 
 function love.update(dt)
@@ -20,9 +22,11 @@ end
 
 function love.draw()
     Push:start()
+
     env:drawBackground()
     state:draw()
     env:drawGround()
+
     Push:finish()
 end
 

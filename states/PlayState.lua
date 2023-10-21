@@ -1,15 +1,17 @@
 PlayState = Class { __includes = BaseState }
 
 function PlayState:init()
-    bird = Bird()
+    self.bird = Bird()
 end
 
 function PlayState:update(dt)
-    bird:update(dt)
+    self.bird:update(dt)
 end
 
 function PlayState:draw()
-    bird:draw()
+    self.bird:draw()
+
+    dev:draw({ self.bird, env })
 end
 
 function PlayState:enter(params) end

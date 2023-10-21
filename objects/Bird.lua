@@ -30,7 +30,6 @@ end
 
 function Bird:draw()
     love.graphics.draw(BIRD.SPRITE, self.x, self.y)
-    self.hitbox:drawDevMode()
 end
 
 function Bird:fall(dt)
@@ -49,4 +48,9 @@ function Bird:stopOnGround()
     -- if self.hitbox:collides(env.ground_hitbox) then
     --     self.y = VIRTUAL_HEIGHT - env:getGroundHeight() - BIRD.HEIGHT
     -- end
+end
+
+-------------------------------------------------------DEVMODE---------------------------------------------------------------------
+function Bird:drawDevMode()
+    self.hitbox:drawDevMode()
 end

@@ -35,9 +35,13 @@ end
 
 function Environment:drawGround()
     love.graphics.draw(GROUND.SPRITE, -self.ground_X, GROUND.Y)
-    self.ground_hitbox:drawDevMode()
 end
 
 function Environment:getGroundHeight()
     return GROUND.HEIGHT
+end
+
+-------------------------------------------------------DEVMODE---------------------------------------------------------------------
+function Environment:drawDevMode()
+    self.ground_hitbox:drawDevMode()
 end

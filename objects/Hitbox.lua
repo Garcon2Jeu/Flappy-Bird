@@ -26,6 +26,7 @@ function Hitbox:collides(box)
     return false
 end
 
+-------------------------------------------------------DEVMODE---------------------------------------------------------------------
 function Hitbox:drawDevMode()
     love.graphics.rectangle("line", self.left, self.top, self.width, self.height)
 end
