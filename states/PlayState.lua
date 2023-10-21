@@ -4,7 +4,9 @@ function PlayState:init()
     bird = Bird()
 end
 
-function PlayState:update(dt) end
+function PlayState:update(dt)
+    bird:update(dt)
+end
 
 function PlayState:draw()
     bird:draw()
