@@ -9,6 +9,10 @@ CENTER_HEIGHT  = WINDOW_HEIGHT / 2
 Class = require "libraries.class"
 Push  = require "libraries.push"
 
+require "states.StateMachine"
+require "states.BaseState"
+require "states.StartState"
+
 require "objects.Environment"
 
 
