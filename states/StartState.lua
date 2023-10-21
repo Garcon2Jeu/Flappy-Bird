@@ -2,7 +2,7 @@ StartState = Class { __includes = BaseState }
 
 function StartState:update(dt)
     if app:wasKeyPressed("space") then
-        state:change("play")
+        state:change("countdown")
     end
 end
 

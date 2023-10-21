@@ -13,7 +13,7 @@ BIRD.HITBOX_OFFSET_WH = -6
 
 function Bird:init()
     self.x      = CENTER_WIDTH - BIRD.WIDTH / 2
-    self.y      = CENTER_HEIGHT - BIRD.HEIGHT / 2
+    self.y      = 0
     self.dy     = 0
     self.hitbox = Hitbox(BIRD.WIDTH + BIRD.HITBOX_OFFSET_WH, BIRD.HEIGHT + BIRD.HITBOX_OFFSET_WH)
 end

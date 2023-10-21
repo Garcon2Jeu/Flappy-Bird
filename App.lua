@@ -13,6 +13,7 @@ require "libraries.DevMode"
 require "states.StateMachine"
 require "states.BaseState"
 require "states.StartState"
+require "states.CountdownState"
 require "states.PlayState"
 require "states.OverState"
 

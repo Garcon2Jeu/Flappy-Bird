@@ -7,6 +7,7 @@ function love.load()
     state = StateMachine {
         ["start"] = function() return StartState() end,
         ["play"] = function() return PlayState() end,
+        ["countdown"] = function() return CountdownState() end,
         ["over"] = function() return OverState() end
     }
 
