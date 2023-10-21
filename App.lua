@@ -2,8 +2,8 @@ WINDOW_WIDTH   = 1280
 WINDOW_HEIGHT  = 720
 VIRTUAL_WIDTH  = 512
 VIRTUAL_HEIGHT = 288
-CENTER_WIDTH   = WINDOW_WIDTH / 2
-CENTER_HEIGHT  = WINDOW_HEIGHT / 2
+CENTER_WIDTH   = VIRTUAL_WIDTH / 2
+CENTER_HEIGHT  = VIRTUAL_HEIGHT / 2
 
 
 Class = require "libraries.class"
@@ -15,6 +15,7 @@ require "states.StartState"
 require "states.PlayState"
 
 require "objects.Environment"
+require "objects.Bird"
 
 
 App = Class {}
