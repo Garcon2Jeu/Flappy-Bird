@@ -33,3 +33,7 @@ end
 function Environment:drawGround()
     love.graphics.draw(GROUND.SPRITE, -self.ground_X, GROUND.Y)
 end
+
+function Environment:getGroundHeight()
+    return GROUND.HEIGHT
+end

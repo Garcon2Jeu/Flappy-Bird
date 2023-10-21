@@ -5,8 +5,8 @@ local BIRD      = {}
 BIRD.SPRITE     = love.graphics.newImage("assets/images/bird.png")
 BIRD.WIDTH      = BIRD.SPRITE:getWidth()
 BIRD.HEIGHT     = BIRD.SPRITE:getHeight()
-BIRD.GRAVITY    = 10
-BIRD.JUMP_FORCE = -3
+BIRD.GRAVITY    = 15
+BIRD.JUMP_FORCE = -3.5
 
 
 function Bird:init()
@@ -20,6 +20,8 @@ function Bird:update(dt)
     self.dy = self:jump()
 
     self.y = self.y + self.dy
+
+    self:stopOnGround()
 end
 
 function Bird:draw()
@@ -32,4 +34,10 @@ end
 
 function Bird:jump()
     return app:wasKeyPressed("space") and BIRD.JUMP_FORCE or self.dy
+end
+
+function Bird:stopOnGround()
+    if self.y + BIRD.HEIGHT >= VIRTUAL_HEIGHT - env:getGroundHeight() then
+        self.y = VIRTUAL_HEIGHT - env:getGroundHeight() - BIRD.HEIGHT
+    end
 end
