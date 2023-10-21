@@ -18,6 +18,7 @@ require "states.PlayState"
 require "objects.Hitbox"
 require "objects.Environment"
 require "objects.Bird"
+require "objects.PipeManager"
 require "objects.Pipe"
 
 

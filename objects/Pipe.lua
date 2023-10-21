@@ -8,22 +8,21 @@ PIPE.HEIGHT = PIPE.SPRITE:getHeight()
 PIPE.GAP    = 120
 
 
-function Pipe:init()
-    self.speed  = env:getGroundSpeed()
-    self.x      = VIRTUAL_WIDTH
-    self.y      = CENTER_HEIGHT
-    self.dx     = 0
-    self.hitbox = Hitbox(PIPE.WIDTH, PIPE.HEIGHT)
+function Pipe:init(y, bottom)
+    self.position = bottom and "bottom" or "top"
+    self.x        = VIRTUAL_WIDTH
+    self.y        = bottom and y or y - PIPE.GAP
+    self.sy       = bottom and 1 or -1
+    self.hitbox   = Hitbox(PIPE.WIDTH, PIPE.HEIGHT)
 end
 
-function Pipe:update(dt)
-    self.dx = self.speed * dt
-    self.x = self.x - self.dx
+function Pipe:update(dt, dx)
+    self.x = self.x - dx
     self.hitbox:update(self.x, self.y)
 end
 
 function Pipe:draw()
-    love.graphics.draw(PIPE.SPRITE, self.x, self.y)
+    love.graphics.draw(PIPE.SPRITE, self.x, self.y, 0, 1, self.sy)
 end
 
 function Pipe:drawDevMode()

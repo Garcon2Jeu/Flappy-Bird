@@ -2,17 +2,17 @@ PlayState = Class { __includes = BaseState }
 
 function PlayState:init()
     self.bird = Bird()
-    self.pipe = Pipe()
+    self.pipeManager = PipeManager()
 end
 
 function PlayState:update(dt)
     self.bird:update(dt)
-    self.pipe:update(dt)
+    self.pipeManager:update(dt)
 end
 
 function PlayState:draw()
     self.bird:draw()
-    self.pipe:draw()
+    self.pipeManager:draw()
 
     dev:draw({ env, self.bird, self.pipe })
 end
