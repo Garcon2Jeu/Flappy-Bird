@@ -75,3 +75,11 @@ function PipeManager:removePipe()
         end
     end
 end
+
+-------------------------------------------------------DEVMODE---------------------------------------------------------------------
+function PipeManager:drawDevMode()
+    for key, pipe in pairs(self.pipePairs) do
+        pipe.top:drawDevMode()
+        pipe.bottom:drawDevMode()
+    end
+end

@@ -10,7 +10,7 @@ PIPE.HEIGHT = PIPE.SPRITE:getHeight()
 function Pipe:init(y, bottom)
     self.bottom = bottom or false
     self.x      = VIRTUAL_WIDTH
-    self.y      = y
+    self.y      = bottom and y or y - PIPE.HEIGHT
     self.sy     = bottom and 1 or -1
     self.hitbox = Hitbox(PIPE.WIDTH, PIPE.HEIGHT)
 end
@@ -21,13 +21,14 @@ function Pipe:update(dx)
 end
 
 function Pipe:draw()
-    love.graphics.draw(PIPE.SPRITE, self.x, self.y, 0, 1, self.sy)
-end
-
-function Pipe:drawDevMode()
-    self.hitbox:drawDevMode()
+    love.graphics.draw(PIPE.SPRITE, self.x, self.bottom and self.y or self.y + PIPE.HEIGHT, 0, 1, self.sy)
 end
 
 function Pipe:isOut()
     return self.x <= -PIPE.WIDTH
+end
+
+-------------------------------------------------------DEVMODE---------------------------------------------------------------------
+function Pipe:drawDevMode()
+    self.hitbox:drawDevMode()
 end
