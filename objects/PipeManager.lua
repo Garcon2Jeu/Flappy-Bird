@@ -45,7 +45,8 @@ end
 function PipeManager:factory(y)
     return {
         top    = Pipe(y - PIPEMANAGER.GAP),
-        bottom = Pipe(y, true)
+        bottom = Pipe(y, true),
+        scored = false
     }
 end
 
