@@ -20,7 +20,7 @@ end
 
 function Bird:update(dt)
     self.dy = self:fall(dt)
-    self.dy = self:jump()
+    self.dy = self:jump() or self.dy
 
     self.y = self.y + self.dy
 
@@ -37,7 +37,10 @@ function Bird:fall(dt)
 end
 
 function Bird:jump()
-    return app:wasKeyPressed("space") and BIRD.JUMP_FORCE or self.dy
+    if app:wasKeyPressed("space") then
+        app.audio.jump:play()
+        return BIRD.JUMP_FORCE
+    end
 end
 
 function Bird:stopOnGround()

@@ -32,6 +32,7 @@ function App:init()
 
     self.fonts = self:getFonts()
     self.audio = self:getAudio()
+    self.audio.music:setLooping(true)
 
     self.keysPressed = {}
 end
