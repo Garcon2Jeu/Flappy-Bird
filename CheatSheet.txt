@@ -21,17 +21,17 @@ BACKGROUND LOOPING POINT 413
 ✅ fonts
 ✅ audio
 
-STATEMACHINE
-base
-start
-play
+✅ STATEMACHINE
+✅ base
+✅ start
+✅ play
 countdown
 over
 
 PIPE
 PIPEMANAGER
-BIRD
-HITBOX
+✅ BIRD
+✅ HITBOX
 ✅ LEVEL
 
 ✅ Font sizes

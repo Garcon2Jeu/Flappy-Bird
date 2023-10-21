@@ -17,6 +17,7 @@ GROUND.Y                = VIRTUAL_HEIGHT - GROUND.HEIGHT
 GROUND.SPEED            = 60
 GROUND.HITBOX_OFFSET_XY = GROUND.Y - 4
 
+
 function Environment:init()
     self.background_X  = 0
     self.ground_X      = 0
@@ -39,6 +40,10 @@ end
 
 function Environment:getGroundHeight()
     return GROUND.HEIGHT
+end
+
+function Environment:getGroundSpeed()
+    return GROUND.SPEED
 end
 
 -------------------------------------------------------DEVMODE---------------------------------------------------------------------

@@ -1,5 +1,6 @@
 Hitbox = Class {}
 
+
 function Hitbox:init(width, height)
     self.width  = width
     self.height = height
