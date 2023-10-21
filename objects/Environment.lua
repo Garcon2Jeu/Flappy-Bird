@@ -19,6 +19,7 @@ GROUND.SPEED  = 60
 function Environment:init()
     self.background_X = 0
     self.ground_X     = 0
+    -- self.ground_hitbox = Hitbox(GROUND.WIDTH, )
 end
 
 function Environment:update(dt)

@@ -14,6 +14,7 @@ require "states.BaseState"
 require "states.StartState"
 require "states.PlayState"
 
+require "objects.Hitbox"
 require "objects.Environment"
 require "objects.Bird"
 
