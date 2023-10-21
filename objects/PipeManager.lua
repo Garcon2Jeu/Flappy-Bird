@@ -9,12 +9,12 @@ PIPEMANAGER.LOWEST  = VIRTUAL_HEIGHT - 16 - PIPEMANAGER.OFFSET
 
 
 function PipeManager:init()
-    self.timer     = 0
-    self.stopper   = 2
-    self.nextY     = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
-    self.lastY     = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
-    self.pipes     = {}
-    self.pipeSpeed = env:getGroundSpeed()
+    self.timer         = 0
+    self.stopper       = 2
+    self.nextY         = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
+    self.lastY         = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
+    self.pipePairs     = {}
+    self.pipePairspeed = env:getGroundSpeed()
 end
 
 function PipeManager:update(dt)
@@ -22,10 +22,11 @@ function PipeManager:update(dt)
 
     self:spawnPipes()
     self:updatePipes(dt)
+    self:removePipe()
 end
 
 function PipeManager:draw()
-    for key, pipe in pairs(self.pipes) do
+    for key, pipe in pairs(self.pipePairs) do
         pipe.top:draw()
         pipe.bottom:draw()
     end
@@ -36,7 +37,7 @@ function PipeManager:spawnPipes()
         self.lastY = self.nextY
         self.nextY = self:getPipeY()
 
-        table.insert(self.pipes, self:factory(self.nextY))
+        table.insert(self.pipePairs, self:factory(self.nextY))
         self.timer = 0
     end
 end
@@ -49,9 +50,9 @@ function PipeManager:factory(y)
 end
 
 function PipeManager:updatePipes(dt)
-    local pipeDX = self.pipeSpeed * dt
+    local pipeDX = self.pipePairspeed * dt
 
-    for key, pipe in pairs(self.pipes) do
+    for key, pipe in pairs(self.pipePairs) do
         pipe.top:update(pipeDX)
         pipe.bottom:update(pipeDX)
     end
@@ -65,4 +66,12 @@ function PipeManager:getPipeY()
             PIPEMANAGER.LOWEST
         )
     )
+end
+
+function PipeManager:removePipe()
+    for key, pipe in pairs(self.pipePairs) do
+        if pipe.bottom:isOut() then
+            table.remove(self.pipePairs, key)
+        end
+    end
 end

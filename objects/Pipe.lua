@@ -27,3 +27,7 @@ end
 function Pipe:drawDevMode()
     self.hitbox:drawDevMode()
 end
+
+function Pipe:isOut()
+    return self.x <= -PIPE.WIDTH
+end
