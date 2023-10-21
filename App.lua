@@ -14,6 +14,7 @@ require "states.StateMachine"
 require "states.BaseState"
 require "states.StartState"
 require "states.PlayState"
+require "states.OverState"
 
 require "objects.Hitbox"
 require "objects.Environment"

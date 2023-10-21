@@ -6,7 +6,8 @@ function love.load()
 
     state = StateMachine {
         ["start"] = function() return StartState() end,
-        ["play"] = function() return PlayState() end
+        ["play"] = function() return PlayState() end,
+        ["over"] = function() return OverState() end
     }
 
     state:change("start")
