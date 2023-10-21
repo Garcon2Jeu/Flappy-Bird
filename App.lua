@@ -63,7 +63,6 @@ function App:getFonts()
         big    = love.graphics.newFont("assets/fonts/flappy.ttf", 28),
         huge   = love.graphics.newFont("assets/fonts/flappy.ttf", 56)
     }
-    -- love.graphics.setFonts(bigFont)
 end
 
 function App:getAudio()

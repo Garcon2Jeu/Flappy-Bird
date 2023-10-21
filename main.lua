@@ -13,7 +13,7 @@ function love.load()
 
     state:change("start")
 
-    dev = DevMode(true)
+    dev = DevMode()
 end
 
 function love.update(dt)

@@ -21,6 +21,7 @@ function PlayState:draw()
     self.bird:draw()
     self.pipeManager:draw()
 
+    love.graphics.setFont(app.fonts.big)
     love.graphics.print("Score = " .. tostring(self.score), 10, 10)
 
     dev:draw({ env, self.bird, self.pipeManager })
@@ -36,6 +37,7 @@ function PlayState:scoring()
             and not pipe.scored then
             self.score = self.score + 1
             pipe.scored = true
+            app.audio.score:play()
         end
     end
 end

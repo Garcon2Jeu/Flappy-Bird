@@ -20,6 +20,7 @@ function CountdownState:update(dt)
 end
 
 function CountdownState:draw()
+    love.graphics.setFont(app.fonts.big)
     love.graphics.printf(tostring(self.count), 0, CENTER_HEIGHT, VIRTUAL_WIDTH, "center")
 end
 
