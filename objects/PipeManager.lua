@@ -1,8 +1,18 @@
 PipeManager = Class {}
 
+
+PIPEMANAGER         = {}
+PIPEMANAGER.GAP     = 120
+PIPEMANAGER.OFFSET  = 50
+PIPEMANAGER.HIGHEST = PIPEMANAGER.OFFSET + PIPEMANAGER.GAP
+PIPEMANAGER.LOWEST  = VIRTUAL_HEIGHT - 16 - PIPEMANAGER.OFFSET
+
+
 function PipeManager:init()
     self.timer     = 0
     self.stopper   = 2
+    self.nextY     = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
+    self.lastY     = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
     self.pipes     = {}
     self.pipeSpeed = env:getGroundSpeed()
 end
@@ -21,24 +31,38 @@ function PipeManager:draw()
     end
 end
 
-function PipeManager:factory()
-    return {
-        top    = Pipe(CENTER_HEIGHT),
-        bottom = Pipe(CENTER_HEIGHT, true)
-    }
-end
-
 function PipeManager:spawnPipes()
     if self.timer >= self.stopper then
-        table.insert(self.pipes, self:factory())
+        self.lastY = self.nextY
+        self.nextY = self:getPipeY()
+
+        table.insert(self.pipes, self:factory(self.nextY))
         self.timer = 0
     end
 end
 
+function PipeManager:factory(y)
+    return {
+        top    = Pipe(y - PIPEMANAGER.GAP),
+        bottom = Pipe(y, true)
+    }
+end
+
 function PipeManager:updatePipes(dt)
     local pipeDX = self.pipeSpeed * dt
+
     for key, pipe in pairs(self.pipes) do
-        pipe.top:update(dt, pipeDX)
-        pipe.bottom:update(dt, pipeDX)
+        pipe.top:update(pipeDX)
+        pipe.bottom:update(pipeDX)
     end
+end
+
+function PipeManager:getPipeY()
+    return math.max(
+        PIPEMANAGER.HIGHEST,
+        math.min(
+            self.lastY + math.random(-20, 20),
+            PIPEMANAGER.LOWEST
+        )
+    )
 end
