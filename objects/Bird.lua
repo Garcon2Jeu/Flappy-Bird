@@ -45,4 +45,8 @@ function Bird:stopOnGround()
     if self.y + BIRD.HEIGHT >= VIRTUAL_HEIGHT - env:getGroundHeight() then
         self.y = VIRTUAL_HEIGHT - env:getGroundHeight() - BIRD.HEIGHT
     end
+
+    -- if self.hitbox:collides(env.ground_hitbox) then
+    --     self.y = VIRTUAL_HEIGHT - env:getGroundHeight() - BIRD.HEIGHT
+    -- end
 end
