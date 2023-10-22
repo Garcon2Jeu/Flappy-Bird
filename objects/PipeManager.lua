@@ -44,7 +44,7 @@ end
 
 function PipeManager:factory(y)
     return {
-        top    = Pipe(y - PIPEMANAGER.GAP),
+        top    = Pipe(y - math.random(90, PIPEMANAGER.GAP)),
         bottom = Pipe(y, true),
         scored = false
     }

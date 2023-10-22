@@ -17,7 +17,7 @@ function love.load()
 end
 
 function love.update(dt)
-    app.audio.music:play()
+    -- app.audio.music:play()
 
     env:update(dt)
     state:update(dt)
