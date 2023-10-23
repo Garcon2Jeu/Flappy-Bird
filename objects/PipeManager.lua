@@ -1,20 +1,24 @@
 PipeManager = Class {}
 
 
-PIPEMANAGER         = {}
-PIPEMANAGER.GAP     = 120
-PIPEMANAGER.OFFSET  = 50
-PIPEMANAGER.HIGHEST = PIPEMANAGER.OFFSET + PIPEMANAGER.GAP
-PIPEMANAGER.LOWEST  = VIRTUAL_HEIGHT - 16 - PIPEMANAGER.OFFSET
+PIPEMANAGER        = {}
+PIPEMANAGER.OFFSET = 50
+PIPEMANAGER.LOWEST = VIRTUAL_HEIGHT - 16 - PIPEMANAGER.OFFSET
 
 
-function PipeManager:init()
-    self.timer         = 0
-    self.stopper       = 2
-    self.nextY         = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
-    self.lastY         = math.random(PIPEMANAGER.LOWEST, PIPEMANAGER.HIGHEST)
-    self.pipePairs     = {}
-    self.pipePairspeed = env:getGroundSpeed()
+function PipeManager:init(levelData)
+    self.timer = 0
+
+    self.pipeData = {}
+    self:setPipeData(levelData)
+
+    self.pipeData.speed = env:getGroundSpeed()
+    self.pipeData.highest = PIPEMANAGER.OFFSET + self.pipeData.gapMax
+
+    self.pipeData.nextY = math.random(PIPEMANAGER.LOWEST, self.pipeData.highest)
+    self.pipeData.lastY = 0
+
+    self.pipePairs = { self:factory(self.pipeData.nextY) }
 end
 
 function PipeManager:update(dt)
@@ -33,40 +37,30 @@ function PipeManager:draw()
 end
 
 function PipeManager:spawnPipes()
-    if self.timer >= self.stopper then
-        self.lastY = self.nextY
-        self.nextY = self:getPipeY()
+    if self.timer >= self.pipeData.frequence then
+        self.pipeData.lastY = self.pipeData.nextY
+        self.pipeData.nextY = self:generatePipeY()
 
-        table.insert(self.pipePairs, self:factory(self.nextY))
+        table.insert(self.pipePairs, self:factory(self.pipeData.nextY))
         self.timer = 0
     end
 end
 
 function PipeManager:factory(y)
     return {
-        top    = Pipe(y - math.random(90, PIPEMANAGER.GAP)),
+        top    = Pipe(y - math.random(self.pipeData.gapMin, self.pipeData.gapMax)),
         bottom = Pipe(y, true),
         scored = false
     }
 end
 
 function PipeManager:updatePipes(dt)
-    local pipeDX = self.pipePairspeed * dt
+    local pipeDX = self.pipeData.speed * dt
 
     for key, pipe in pairs(self.pipePairs) do
         pipe.top:update(pipeDX)
         pipe.bottom:update(pipeDX)
     end
-end
-
-function PipeManager:getPipeY()
-    return math.max(
-        PIPEMANAGER.HIGHEST,
-        math.min(
-            self.lastY + math.random(-20, 20),
-            PIPEMANAGER.LOWEST
-        )
-    )
 end
 
 function PipeManager:removePipe()
@@ -75,6 +69,24 @@ function PipeManager:removePipe()
             table.remove(self.pipePairs, key)
         end
     end
+end
+
+function PipeManager:generatePipeY()
+    return math.max(
+        self.pipeData.highest,
+        math.min(
+            self.pipeData.lastY + math.random(-20, 20),
+            PIPEMANAGER.LOWEST
+        )
+    )
+end
+
+-------------------------------------------------------Getters & Setters---------------------------------------------------------------------
+function PipeManager:setPipeData(levelData)
+    self.pipeData.frequence = levelData.FREQUENCE
+    self.pipeData.gapMin = levelData.GAP_MIN
+    self.pipeData.gapMax = levelData.GAP_MAX
+    self.pipeData.highest = PIPEMANAGER.OFFSET + self.pipeData.gapMax
 end
 
 -------------------------------------------------------DEVMODE---------------------------------------------------------------------

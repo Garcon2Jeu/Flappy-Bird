@@ -6,9 +6,9 @@ BIRD.SPRITE           = love.graphics.newImage("assets/images/bird.png")
 BIRD.WIDTH            = BIRD.SPRITE:getWidth()
 BIRD.HEIGHT           = BIRD.SPRITE:getHeight()
 BIRD.GRAVITY          = 15
-BIRD.JUMP_FORCE       = -3.5
-BIRD.HITBOX_OFFSET_XY = 2
-BIRD.HITBOX_OFFSET_WH = -6
+BIRD.JUMP_FORCE       = -3
+BIRD.HITBOX_OFFSET_XY = 3
+BIRD.HITBOX_OFFSET_WH = -8
 
 
 function Bird:init()
