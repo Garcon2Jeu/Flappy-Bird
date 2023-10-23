@@ -21,13 +21,12 @@ LEVEL_3.GAP_MAX   = 100
 
 
 function PlayState:init()
+    self.name        = "play"
     self.levelData   = { LEVEL_1, LEVEL_2, LEVEL_3 }
     self.level       = 1
     self.score       = 0
     self.bird        = Bird()
     self.pipeManager = PipeManager(self.levelData[1])
-
-    self.test        = "heyoooo"
 end
 
 function PlayState:update(dt)
@@ -64,7 +63,7 @@ function PlayState:exit() end
 
 function PlayState:pause()
     if app:wasKeyPressed("p") then
-        state:switch(true, "pause", self)
+        state:switchTo("play", "pause", self)
     end
 end
 

@@ -11,7 +11,7 @@ function PauseState:update(dt)
         app.audio.music:play()
         app.audio.pause:play()
         env.scrolling = true
-        state:switch(false)
+        state:switchBack("play")
     end
 end
 

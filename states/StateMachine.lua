@@ -9,6 +9,7 @@ function StateMachine:init(states)
     }
     self.states = states or {}
     self.current = self.empty
+    self.placeholder = {}
 end
 
 function StateMachine:change(stateName, enterParams)
@@ -26,11 +27,12 @@ function StateMachine:draw()
     self.current:draw()
 end
 
-function StateMachine:switch(triggered, stateName, enterParams)
-    if triggered then
-        self.placeholder = self.current
-        self:change(stateName, enterParams)
-    else
-        self.current = self.placeholder
-    end
+function StateMachine:switchTo(key, stateName, enterParams)
+    self.placeholder[key] = self.current
+    self:change(stateName, enterParams)
+end
+
+function StateMachine:switchBack(key)
+    assert(self.placeholder[key])
+    self.current = self.placeholder[key]
 end

@@ -4,6 +4,8 @@ function CountdownState:init()
     self.count = 3
     self.step  = 1
     self.timer = 0
+
+    app.audio.wait:play()
 end
 
 function CountdownState:update(dt)
