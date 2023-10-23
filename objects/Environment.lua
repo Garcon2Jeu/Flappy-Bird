@@ -50,8 +50,3 @@ end
 function Environment:getGroundSpeed()
     return GROUND.SPEED
 end
-
--------------------------------------------------------DEVMODE---------------------------------------------------------------------
-function Environment:drawDevMode()
-    self.ground_hitbox:drawDevMode()
-end

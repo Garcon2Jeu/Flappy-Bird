@@ -8,7 +8,6 @@ CENTER_HEIGHT  = VIRTUAL_HEIGHT / 2
 
 Class = require "libraries.class"
 Push  = require "libraries.push"
-require "libraries.DevMode"
 
 require "states.StateMachine"
 require "states.BaseState"

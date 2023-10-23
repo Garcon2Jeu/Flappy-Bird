@@ -81,18 +81,9 @@ function PipeManager:generatePipeY()
     )
 end
 
--------------------------------------------------------Getters & Setters---------------------------------------------------------------------
 function PipeManager:setPipeData(levelData)
     self.pipeData.frequence = levelData.FREQUENCE
     self.pipeData.gapMin = levelData.GAP_MIN
     self.pipeData.gapMax = levelData.GAP_MAX
     self.pipeData.highest = PIPEMANAGER.OFFSET + self.pipeData.gapMax
-end
-
--------------------------------------------------------DEVMODE---------------------------------------------------------------------
-function PipeManager:drawDevMode()
-    for key, pipe in pairs(self.pipePairs) do
-        pipe.top:drawDevMode()
-        pipe.bottom:drawDevMode()
-    end
 end

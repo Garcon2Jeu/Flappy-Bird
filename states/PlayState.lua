@@ -53,8 +53,6 @@ function PlayState:draw()
     love.graphics.setFont(app.fonts.big)
     love.graphics.print("Level " .. tostring(self.level), 10, 10)
     love.graphics.print("Score = " .. tostring(self.score), 10, 40)
-
-    dev:draw({ env, self.bird, self.pipeManager })
 end
 
 function PlayState:enter(params) end

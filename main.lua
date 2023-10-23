@@ -15,7 +15,6 @@ function love.load()
     state:change("start")
 
     app.audio.music:play()
-    dev = DevMode()
 end
 
 function love.update(dt)

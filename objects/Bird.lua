@@ -52,8 +52,3 @@ function Bird:stopOnGround()
     --     self.y = VIRTUAL_HEIGHT - env:getGroundHeight() - BIRD.HEIGHT
     -- end
 end
-
--------------------------------------------------------DEVMODE---------------------------------------------------------------------
-function Bird:drawDevMode()
-    self.hitbox:drawDevMode()
-end
