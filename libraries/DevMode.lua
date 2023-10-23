@@ -19,4 +19,7 @@ function DevMode:draw(list)
 
     love.graphics.print(tostring(state.current.levelData[state.current.level].GAP_MIN), 50, 130)
     love.graphics.print(tostring(state.current.levelData[state.current.level].GAP_MAX), 50, 140)
+
+    love.graphics.line(0, CENTER_HEIGHT, VIRTUAL_WIDTH, CENTER_HEIGHT)
+    love.graphics.line(CENTER_WIDTH, 0, CENTER_WIDTH, VIRTUAL_HEIGHT)
 end

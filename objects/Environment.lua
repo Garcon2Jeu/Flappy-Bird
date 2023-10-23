@@ -15,7 +15,7 @@ GROUND.WIDTH            = GROUND.SPRITE:getWidth()
 GROUND.HEIGHT           = GROUND.SPRITE:getHeight()
 GROUND.Y                = VIRTUAL_HEIGHT - GROUND.HEIGHT
 GROUND.SPEED            = 60
-GROUND.HITBOX_OFFSET_XY = GROUND.Y - 4
+GROUND.HITBOX_OFFSET_XY = GROUND.Y - 6
 
 
 function Environment:init()
