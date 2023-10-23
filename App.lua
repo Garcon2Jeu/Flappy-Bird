@@ -16,6 +16,7 @@ require "states.StartState"
 require "states.CountdownState"
 require "states.PlayState"
 require "states.OverState"
+require "states.PauseState"
 
 require "objects.Hitbox"
 require "objects.Environment"
@@ -68,10 +69,14 @@ end
 function App:getAudio()
     return {
         explosion = love.audio.newSource("assets/audio/explosion.wav", "static"),
-        hurt = love.audio.newSource("assets/audio/hurt.wav", "static"),
-        jump = love.audio.newSource("assets/audio/jump.wav", "static"),
-        score = love.audio.newSource("assets/audio/score.wav", "static"),
-        music = love.audio.newSource("assets/audio/marios_way.mp3", "static")
+        go        = love.audio.newSource("assets/audio/go.wav", "static"),
+        hurt      = love.audio.newSource("assets/audio/hurt.wav", "static"),
+        jump      = love.audio.newSource("assets/audio/jump.wav", "static"),
+        pause     = love.audio.newSource("assets/audio/pause.wav", "static"),
+        score     = love.audio.newSource("assets/audio/score.wav", "static"),
+        unpause   = love.audio.newSource("assets/audio/unpause.wav", "static"),
+        wait      = love.audio.newSource("assets/audio/wait.wav", "static"),
+        music     = love.audio.newSource("assets/audio/marios_way.mp3", "static")
     }
 end
 

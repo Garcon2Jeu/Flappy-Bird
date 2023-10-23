@@ -2,20 +2,20 @@ PlayState = Class { __includes = BaseState }
 
 
 local LEVEL_1     = {}
-LEVEL_1.GOAL      = 1
+LEVEL_1.GOAL      = 3
 LEVEL_1.FREQUENCE = 4
 LEVEL_1.GAP_MIN   = 120
 LEVEL_1.GAP_MAX   = 120
 
 local LEVEL_2     = {}
-LEVEL_2.GOAL      = 2
+LEVEL_2.GOAL      = 6
 LEVEL_2.FREQUENCE = 3
 LEVEL_2.GAP_MIN   = 80
 LEVEL_2.GAP_MAX   = 100
 
 local LEVEL_3     = {}
-LEVEL_3.GOAL      = 3
-LEVEL_3.FREQUENCE = 1
+LEVEL_3.GOAL      = 9
+LEVEL_3.FREQUENCE = 2
 LEVEL_3.GAP_MIN   = 60
 LEVEL_3.GAP_MAX   = 100
 
@@ -26,9 +26,13 @@ function PlayState:init()
     self.score       = 0
     self.bird        = Bird()
     self.pipeManager = PipeManager(self.levelData[1])
+
+    self.test        = "heyoooo"
 end
 
 function PlayState:update(dt)
+    self:pause()
+
     self.bird:update(dt)
     self.pipeManager:update(dt, self.levelData)
 
@@ -57,6 +61,12 @@ end
 function PlayState:enter(params) end
 
 function PlayState:exit() end
+
+function PlayState:pause()
+    if app:wasKeyPressed("p") then
+        state:switch(true, "pause", self)
+    end
+end
 
 function PlayState:scoring()
     for key, pipe in pairs(self.pipeManager.pipePairs) do

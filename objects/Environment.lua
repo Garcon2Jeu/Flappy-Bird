@@ -22,9 +22,14 @@ function Environment:init()
     self.background_X  = 0
     self.ground_X      = 0
     self.ground_hitbox = Hitbox(GROUND.WIDTH, GROUND.HEIGHT)
+    self.scrolling     = true
 end
 
 function Environment:update(dt)
+    if not self.scrolling then
+        return
+    end
+
     self.background_X = (self.background_X + BACKGROUND.SPEED * dt) % BACKGROUND.LOOPING_POINT
     self.ground_X = (self.ground_X + GROUND.SPEED * dt) % VIRTUAL_WIDTH
     self.ground_hitbox:update(0, GROUND.HITBOX_OFFSET_XY)

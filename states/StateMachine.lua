@@ -25,3 +25,12 @@ end
 function StateMachine:draw()
     self.current:draw()
 end
+
+function StateMachine:switch(triggered, stateName, enterParams)
+    if triggered then
+        self.placeholder = self.current
+        self:change(stateName, enterParams)
+    else
+        self.current = self.placeholder
+    end
+end

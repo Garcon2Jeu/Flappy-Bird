@@ -8,17 +8,17 @@ function love.load()
         ["start"] = function() return StartState() end,
         ["play"] = function() return PlayState() end,
         ["countdown"] = function() return CountdownState() end,
-        ["over"] = function() return OverState() end
+        ["over"] = function() return OverState() end,
+        ["pause"] = function() return PauseState() end
     }
 
     state:change("start")
 
-    dev = DevMode(true)
+    app.audio.music:play()
+    dev = DevMode()
 end
 
 function love.update(dt)
-    -- app.audio.music:play()
-
     env:update(dt)
     state:update(dt)
     app:update(dt)

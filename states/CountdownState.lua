@@ -12,9 +12,11 @@ function CountdownState:update(dt)
     if self.timer > self.step then
         self.timer = self.timer % self.step
         self.count = self.count - 1
+        app.audio.wait:play()
     end
 
     if self.count == 0 then
+        app.audio.go:play()
         state:change("play")
     end
 end
