@@ -35,9 +35,12 @@ function PlayState:update(dt)
     self:scoring()
     self:levelUp()
 
-    -- if self:hasPlayerLost() then
-    --     state:change("over", self.score)
-    -- end
+    if self:hasPlayerLost() then
+        state:change("over", {
+            score = self.score,
+            level = self.level
+        })
+    end
 end
 
 function PlayState:draw()
