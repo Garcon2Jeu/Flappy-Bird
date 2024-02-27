@@ -11,6 +11,8 @@ Les sujets abordés sont les suivants:
 - Intégration de la souris
 - Intégration de musique
 
+Pour y jouer, vous devez tout d'abord télécharger le moteur LÖVE2D disponible ci-dessous:
+
 https://love2d.org/#download
 
 Vous pouvez maintenant télécharger et lancer le fichier du jeu "Pong.love".
