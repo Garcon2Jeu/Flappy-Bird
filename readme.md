@@ -15,7 +15,7 @@ Pour y jouer, vous devez tout d'abord télécharger le moteur LÖVE2D disponible
 
 https://love2d.org/#download
 
-Vous pouvez maintenant télécharger et lancer le fichier du jeu "Pong.love".
+Vous pouvez maintenant télécharger et lancer le fichier du jeu "FlappyBird.love".
 
 <img src="FB_Screenshot_1.png">
 <img src="FB_Screenshot_2.png">
