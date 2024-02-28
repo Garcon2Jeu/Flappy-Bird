@@ -1,4 +1,4 @@
-##Flappy Bird
+## Flappy Bird
 
 L'objectif de la deuxième semaine de la formation GD50 de l'université Harvard était de recréer le jeu populaire Flappy Bird avec le moteur de jeu LÖVE2D et le language de programmation Lua
 
@@ -10,6 +10,8 @@ Les sujets abordés sont les suivants:
 - Les State Machines
 - Intégration de la souris
 - Intégration de musique
+
+Pour y jouer, vous devez tout d'abord télécharger le moteur LÖVE2D disponible ci-dessous:
 
 https://love2d.org/#download
 
